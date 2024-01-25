@@ -1,0 +1,16 @@
+service: s3-access
+
+provider:
+    name: aws
+    region: ap-south-1
+    runtime: nodejs20.x
+    iam:
+        role:
+            statements:
+                - Effect: Allow
+                  Action: s3:*
+                  Resource:
+                      - "*"
+functions:
+    list-buckets:
+        handler: list-buckets.handler
